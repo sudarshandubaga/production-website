@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\Page;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index()
     {
+        $page = Page::where('slug', 'home')->firstOrFail();
+
         $videos = [
             "9SNLma8mcK8",
             "a3B2glol4IU",
@@ -19,6 +22,7 @@ class HomeController extends Controller
             "h6qwhCDI3vQ",
             "VGPmFSB8qVY",
         ];
+
         $blogs = [
             [
                 'image' => 'https://www.financialexpress.com/wp-content/uploads/2025/01/Sky-Force-movie-Poster.jpg?w=1024',
@@ -45,6 +49,7 @@ class HomeController extends Controller
                 'description' => 'The word Lorem Ipsum is derived from the Latin word which means “pain itself”. It is a kind of a text filler tool that is used by the webmaster on the website. Basically, this tool is used to create dummy content on the website when it\'s new.'
             ],
         ];
-        return view('web.screens.home', compact("videos", 'blogs'));
+
+        return view('web.screens.home', compact("videos", 'blogs', 'page'));
     }
 }

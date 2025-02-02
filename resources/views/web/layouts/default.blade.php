@@ -24,29 +24,9 @@
                             title="{{ env('APP_NAME') }} Logo" class="h-20">
                     </a>
 
-                    <ul class="ms-auto flex gap-5 px-5 text-lg [&>li:hover]:text-yellow-800 font-bold">
-                        <li>
-                            <a href="">Home</a>
-                        </li>
-                        <li>
-                            <a href="">About</a>
-                        </li>
-                        <li>
-                            <a href="">Television</a>
-                        </li>
-                        <li>
-                            <a href="">VFX</a>
-                        </li>
-                        <li>
-                            <a href="">Studio</a>
-                        </li>
-                        <li>
-                            <a href="">Syndication</a>
-                        </li>
-                        <li>
-                            <a href="">Contact</a>
-                        </li>
-                    </ul>
+                    <x-menu menuLocation="Header" :params="[
+                        'class' => 'ms-auto flex gap-5 px-5 text-lg [&>li:hover]:text-yellow-800 font-bold',
+                    ]" />
                 </div>
             </div>
         </div>
@@ -85,73 +65,20 @@
                 </div>
                 <div class="col-span-1">
                     <h3 class="text-3xl font-bold text-white mb-5">Quick Links</h3>
-                    <ul class="space-y-3">
-                        <li>
-                            <a href="#" class="flex items-center gap-2">
-                                <i class="bi bi-circle-fill scale-50"></i>
-                                Television
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="flex items-center gap-2">
-                                <i class="bi bi-circle-fill scale-50"></i>
-                                VFX
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="flex items-center gap-2">
-                                <i class="bi bi-circle-fill scale-50"></i>
-                                Studio
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="flex items-center gap-2">
-                                <i class="bi bi-circle-fill scale-50"></i>
-                                Syndication
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="flex items-center gap-2">
-                                <i class="bi bi-circle-fill scale-50"></i>
-                                News
-                            </a>
-                        </li>
-                    </ul>
+
+                    <x-menu menuLocation="Footer 1" :params="[
+                        'class' => 'space-y-3',
+                        'beforeIcon' => '<i class=\'bi bi-circle-fill scale-50\'></i>',
+                        'linkClass' => 'flex items-center gap-2',
+                    ]" />
                 </div>
                 <div class="col-span-1">
                     <h3 class="text-3xl font-bold text-white mb-5">Support</h3>
-                    <ul class="space-y-3">
-                        <li>
-                            <a href="#" class="flex items-center gap-2">
-                                <i class="bi bi-circle-fill scale-50"></i>
-                                About Us
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="flex items-center gap-2">
-                                <i class="bi bi-circle-fill scale-50"></i>
-                                Contact Us
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="flex items-center gap-2">
-                                <i class="bi bi-circle-fill scale-50"></i>
-                                FAQs
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="flex items-center gap-2">
-                                <i class="bi bi-circle-fill scale-50"></i>
-                                Privacy Policy
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="flex items-center gap-2">
-                                <i class="bi bi-circle-fill scale-50"></i>
-                                Terms &amp; Conditions
-                            </a>
-                        </li>
-                    </ul>
+                    <x-menu menuLocation="Footer 2" :params="[
+                        'class' => 'space-y-3',
+                        'beforeIcon' => '<i class=\'bi bi-circle-fill scale-50\'></i>',
+                        'linkClass' => 'flex items-center gap-2',
+                    ]" />
                 </div>
                 <div class="col-span-2">
                     <h3 class="text-3xl font-bold text-white mb-5">Get In Touch</h3>
