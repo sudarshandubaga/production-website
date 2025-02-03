@@ -5,23 +5,15 @@
     <section>
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <img src="https://dharma-production.com/api/upload/readFile?file=672caa53d634c60c653c4985.jpg"
-                        alt="Slide 1" loading="lazy" class="aspect-video object-cover w-full">
-                </div>
-                <div class="swiper-slide">
-                    <img src="https://dharmaprodutionsblog.wordpress.com/wp-content/uploads/2019/09/tw-banner-1.jpg?w=486"
-                        alt="Slide 2" loading="lazy" class="aspect-video object-cover w-full">
-                </div>
-                <div class="swiper-slide">
-                    <img src="https://dharma-production.com/api/upload/readFile?file=672caa53d634c60c653c4985.jpg"
-                        alt="Slide 3" loading="lazy" class="aspect-video object-cover w-full">
-                </div>
+                @foreach ($sliders as $slide)
+                    <div class="swiper-slide">
+                        <img src="{{ $slide->image }}" alt="{{ $slide->title }}" loading="lazy"
+                            class="aspect-video object-cover w-full">
+                    </div>
+                @endforeach
             </div>
-            <button
-                class="swiper-button-next !block bg-orange-500/80 !text-white !h-auto py-2 !w-16 aspect-square"></button>
-            <button
-                class="swiper-button-prev !block bg-orange-500/80 !text-white !h-auto py-2 !w-16 aspect-square"></button>
+            <button class="swiper-button-next !block bg-orange-500/80 !text-white !h-auto py-2 !w-16 aspect-square"></button>
+            <button class="swiper-button-prev !block bg-orange-500/80 !text-white !h-auto py-2 !w-16 aspect-square"></button>
             <div class="swiper-pagination !block"></div>
         </div>
     </section>

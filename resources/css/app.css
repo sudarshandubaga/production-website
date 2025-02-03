@@ -22,3 +22,10 @@
         @apply rounded-se-xl rounded-es-xl rounded-ss-none rounded-ee-none border-orange-500 bg-orange-500;
     }
 }
+footer {
+    a {
+        &:hover {
+            @apply text-orange-500;
+        }
+    }
+}

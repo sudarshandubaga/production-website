@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Page;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,6 +12,8 @@ class HomeController extends Controller
     public function index()
     {
         $page = Page::where('slug', 'home')->firstOrFail();
+
+        $sliders = Slider::latest()->get();
 
         $videos = [
             "9SNLma8mcK8",
@@ -50,6 +53,6 @@ class HomeController extends Controller
             ],
         ];
 
-        return view('web.screens.home', compact("videos", 'blogs', 'page'));
+        return view('web.screens.home', compact("videos", 'blogs', 'page', 'sliders'));
     }
 }

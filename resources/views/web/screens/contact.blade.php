@@ -56,7 +56,7 @@
                                 <div class="font-bold">
                                     Contact No.:
                                 </div>
-                                <a>+91 9012345678</a>
+                                <a href="tel:{{ $site->phone }}">{{ $site->phone }}</a>
                             </div>
                         </div>
                         <div class="flex gap-3 items-center py-5 border-b-2">
@@ -65,24 +65,20 @@
                                 <div class="font-bold">
                                     Email Address:
                                 </div>
-                                <a>info@floatingflowerfilms.com</a>
+                                <a href="mailto:{{ $site->email }}">{{ $site->email }}</a>
                             </div>
                         </div>
                         <div class="flex gap-3 py-5">
                             <i class="bi bi-geo-alt text-orange-500 text-3xl"></i>
                             <address>
-                                <span class="font-bold">{{ env('APP_NAME') }}</span>,<br />
-                                166, S.V. Road, Near Andheri Subway,<br />
-                                Andheri West, Mumbai &mdash; 400058,<br />
-                                Maharashtra.
+                                <span class="font-bold">{{ $site->title }}</span>,<br />
+                                {!! nl2br($site->address) !!}
                             </address>
                         </div>
 
                         <div class="border">
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3577.6525788380945!2d73.02279487480537!3d26.27293678729287!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39418d5c7b096573%3A0xe760a915f5109398!2sXPERT%20CODERS%20PRIVATE%20LIMITED!5e0!3m2!1sen!2sin!4v1738496385901!5m2!1sen!2sin"
-                                class="w-full aspect-[2/1]" allowfullscreen="" loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe src="{{ $site->google_map }}" class="w-full aspect-[2/1]" allowfullscreen=""
+                                loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
                 </div>

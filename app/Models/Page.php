@@ -13,4 +13,9 @@ class Page extends Model
     {
         return 'slug';
     }
+
+    public function getImageAttribute($image)
+    {
+        return $image ? asset('storage/' . $image) : null;
+    }
 }

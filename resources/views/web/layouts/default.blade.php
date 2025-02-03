@@ -5,11 +5,36 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>{{ $page->seo_title ?: $site->title }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+
+    <meta name="keywords" content="{{ $page->seo_keywords }}">
+    <meta name="description" content="{{ $page->seo_description }}">
+    <meta name="author" content="{{ $site->title }}">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph for Social Media -->
+    <meta property="og:title" content="{{ $page->seo_title ?: $site->title }}">
+    <meta property="og:description" content="{{ $page->seo_description }}">
+    <meta property="og:image" content="{{ $page->image }}">
+    <meta property="og:url" content="{{ request()->url() }}">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card for Better Twitter Sharing -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $page->seo_title ?: $site->title }}">
+    <meta name="twitter:description" content="{{ $page->seo_description }}">
+    <meta name="twitter:image" content="{{ $page->image }}">
+
+    <!-- Canonical URL to Avoid Duplicate Content Issues -->
+    <link rel="canonical" href="{{ request()->url() }}">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{ $site->favicon }}" type="image/x-icon">
+
 
     @vite('resources/css/app.css')
 </head>
@@ -20,8 +45,8 @@
             <div class="bg-orange-400 rounded overflow-hidden">
                 <div class="flex items-center">
                     <a href="{{ route('home') }}" class="block bg-orange-200 px-5 py-2">
-                        <img src="{{ asset('images/logo.png') }}" alt="{{ env('APP_NAME') }} Logo"
-                            title="{{ env('APP_NAME') }} Logo" class="h-20">
+                        <img src="{{ $site->logo }}" alt="{{ $site->title }} Logo"
+                            title="{{ $site->title }} Logo" class="h-20">
                     </a>
 
                     <x-menu menuLocation="Header" :params="[
@@ -36,11 +61,11 @@
         @yield('main_content')
     </main>
 
-    <footer class="py-16 text-sm bg-gray-900 text-gray-200">
+    <footer class="py-16 text-sm bg-gray-900 text-gray-300">
         <div class="container">
             <div class="grid grid-cols-7 gap-5">
                 <div class="col-span-3">
-                    <h3 class="text-3xl font-bold text-white mb-5">{{ env('APP_NAME') }}</h3>
+                    <h3 class="text-3xl font-bold text-white mb-5">{{ $site->title }}</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro quibusdam eum quaerat incidunt,
                         molestias illum ducimus soluta corporis debitis odit aspernatur placeat rem dolor minus ullam
                         accusamus voluptates sit sapiente?</p>
@@ -85,17 +110,18 @@
                     <div class="space-y-3 text-lg">
                         <div class="flex gap-3">
                             <i class="bi bi-phone"></i>
-                            <a>+91 9012345678</a>
+                            <a href="tel:{{ $site->phone }}">{{ $site->phone }}</a>
                         </div>
                         <div class="flex gap-3">
                             <i class="bi bi-envelope"></i>
-                            <a>info@floatingflowerfilms.com</a>
+                            <a href="mailto:{{ $site->email }}">{{ $site->email }}</a>
                         </div>
                         <div class="flex gap-3">
                             <i class="bi bi-geo-alt"></i>
-                            <a>{{ env('APP_NAME') }},<br /> 166, S.V. Road, Near Andheri Subway, Andheri West, Mumbai -
-                                400058,
-                                Maharashtra.</a>
+                            <a>
+                                <span class="text-white font-bold">{{ $site->title }}</span><br />
+                                {!! nl2br($site->address) !!}
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -104,7 +130,7 @@
             <div class="mt-10 flex justify-between">
                 <div>
                     &copy; {{ date('Y') }} . All rights are reserved by <a href="{{ route('home') }}"
-                        class="font-bold">{{ env('APP_NAME') }}</a>
+                        class="font-bold">{{ $site->title }}</a>
                 </div>
                 <div>
                     Managed By: <a href="https://thexpertcoders.com" class="font-bold" target="_blank"
