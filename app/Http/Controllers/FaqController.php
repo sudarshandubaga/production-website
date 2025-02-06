@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\FaqCategory;
 use App\Models\Faq;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -31,8 +30,7 @@ class FaqController extends Controller
     {
         request()->flush();
 
-        $faqCategories = FaqCategory::orderBy('name')->pluck('name', 'id');
-        return view('admin.screens.faq.create', compact('faqCategories'));
+        return view('admin.screens.faq.create');
     }
 
     /**
@@ -43,29 +41,12 @@ class FaqController extends Controller
      */
     public function store(Request $request)
     {
-        $slug = Str::slug(strtolower($request->title), "-");
-
         $faq = new Faq();
         $faq->question = $request->question;
         $faq->answer = $request->answer;
-        $faq->faq_category_id = $request->faq_category_id;
         $faq->save();
 
         return redirect(route('admin.faq.index'))->with('success', 'Success! New faq has been added.');
-    }
-
-    protected function dataUriToImage($dataUri)
-    {
-        @list($type, $image) = explode(';base64,', $dataUri);
-        $extension = substr($type, 11, strlen($type));
-
-        // $image = $imageArr[1];
-        $image = str_replace(' ', '+', $image);
-        $data = base64_decode($image);
-
-        $fileName = uniqid() . "." . $extension;
-
-        return compact('data', 'fileName');
     }
 
     /**
@@ -90,9 +71,7 @@ class FaqController extends Controller
         request()->replace($faq->toArray());
         request()->flash();
 
-        $faqCategories = FaqCategory::orderBy('name')->pluck('name', 'id');
-
-        return view('admin.screens.faq.edit', compact('faq', 'faqCategories'));
+        return view('admin.screens.faq.edit', compact('faq'));
     }
 
     /**
@@ -106,7 +85,6 @@ class FaqController extends Controller
     {
         $faq->question = $request->question;
         $faq->answer = $request->answer;
-        $faq->faq_category_id = $request->faq_category_id;
         $faq->save();
 
         return redirect(route('admin.faq.index'))->with('success', 'Success! Faq has been updated.');

@@ -1,15 +1,15 @@
 @extends('admin.layouts.afterlogin')
 
-@section('title', 'Gallery')
+@section('title', 'Team')
 
 @section('admin_content')
     <!-- Content -->
     <div class="container-xxl flex-grow-1 container-p-y">
         <x-alert />
         <div class="card">
-            <h5 class="card-header">View Galleries</h5>
+            <h5 class="card-header">View Teams</h5>
             <div class="card-body">
-                @if ($galleries->isEmpty())
+                @if ($teams->isEmpty())
                     <div>No data found.</div>
                 @else
                     <div class="table-responsive">
@@ -18,34 +18,42 @@
                                 <tr>
                                     <th>SNo.</th>
                                     <th>Image</th>
-                                    <th>Title</th>
+                                    <th>Name</th>
+                                    <th>Position</th>
+                                    <th>IMDB Link</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($galleries as $key => $gallery)
+                                @foreach ($teams as $key => $team)
                                     <tr>
                                         <td>
-                                            {{ $key + $galleries->firstItem() }}
+                                            {{ $key + $teams->firstItem() }}
                                         </td>
                                         <td>
-                                            @if ($gallery->image)
-                                                <img src="{{ $gallery->image }}" alt="{{ $gallery->name }}"
+                                            @if ($team->image)
+                                                <img src="{{ $team->image }}" alt="{{ $team->name }}"
                                                     class="img img-thumbnail" style="max-height: 48px">
                                             @else
                                                 No Image
                                             @endif
                                         </td>
                                         <td>
-                                            {{ $gallery->title }}
+                                            {{ $team->name }}
                                         </td>
                                         <td>
-                                            <a href="{{ route('admin.gallery.edit', $gallery) }}" title="Edit"
+                                            {{ $team->position }}
+                                        </td>
+                                        <td>
+                                            {{ $team->imdb_link }}
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('admin.team.edit', $team) }}" title="Edit"
                                                 class="btn btn-link">
                                                 <i class="bx bxs-pencil"></i>
                                             </a>
                                             <button type="button" class="btn btn-link text-danger btn-delete"
-                                                data-href="{{ route('admin.gallery.destroy', [$gallery]) }}">
+                                                data-href="{{ route('admin.team.destroy', [$team]) }}">
                                                 <i class="bx bx-trash"></i>
                                             </button>
                                         </td>
@@ -55,7 +63,7 @@
                         </table>
                     </div>
                     <div class="py-5">
-                        {{ $galleries->links() }}
+                        {{ $teams->links() }}
                     </div>
                 @endif
             </div>

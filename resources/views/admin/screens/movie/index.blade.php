@@ -1,15 +1,15 @@
 @extends('admin.layouts.afterlogin')
 
-@section('title', 'FAQ')
+@section('title', 'Movie')
 
 @section('admin_content')
     <!-- Content -->
     <div class="container-xxl flex-grow-1 container-p-y">
         <x-alert />
         <div class="card">
-            <h5 class="card-header">View FAQs</h5>
+            <h5 class="card-header">View Movies</h5>
             <div class="card-body">
-                @if ($faqs->isEmpty())
+                @if ($movies->isEmpty())
                     <div>No data found.</div>
                 @else
                     <div class="table-responsive">
@@ -17,25 +17,39 @@
                             <thead>
                                 <tr>
                                     <th>SNo.</th>
-                                    <th>Question</th>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Type</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($faqs as $key => $faq)
+                                @foreach ($movies as $key => $movie)
                                     <tr>
                                         <td>
-                                            {{ $key + $faqs->firstItem() }}
+                                            {{ $key + $movies->firstItem() }}
                                         </td>
                                         <td>
-                                            {{ $faq->question }}
+                                            @if ($movie->image)
+                                                <img src="{{ $movie->image }}" alt="{{ $movie->name }}"
+                                                    class="img img-thumbnail" style="max-height: 48px">
+                                            @else
+                                                No Image
+                                            @endif
                                         </td>
                                         <td>
-                                            <a href="{{ route('admin.faq.edit', $faq) }}" title="Edit" class="btn btn-link">
+                                            {{ $movie->name }}
+                                        </td>
+                                        <td>
+                                            {{ $movie->type }}
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('admin.movie.edit', $movie) }}" title="Edit"
+                                                class="btn btn-link">
                                                 <i class="bx bxs-pencil"></i>
                                             </a>
                                             <button type="button" class="btn btn-link text-danger btn-delete"
-                                                data-href="{{ route('admin.faq.destroy', [$faq]) }}">
+                                                data-href="{{ route('admin.movie.destroy', [$movie]) }}">
                                                 <i class="bx bx-trash"></i>
                                             </button>
                                         </td>
@@ -45,7 +59,7 @@
                         </table>
                     </div>
                     <div class="py-5">
-                        {{ $faqs->links() }}
+                        {{ $movies->links() }}
                     </div>
                 @endif
             </div>

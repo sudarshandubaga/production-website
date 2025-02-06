@@ -20,23 +20,7 @@
                             <h1 class="text-xl font-bold text-gray-800">{{ $member['name'] }}</h1>
                             <h2 class="text-lg font-semibold text-gray-400">{{ $member['position'] }}</h2>
                             <p class="text-gray-600">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum dolor, exercitationem
-                                molestias voluptatibus autem non minima odit impedit fugiat tenetur iusto, dolores laborum
-                                voluptates, sunt dignissimos error corrupti distinctio in veniam facilis velit? Voluptatibus
-                                error reiciendis nostrum accusantium ex! Nemo eveniet minima tempore modi, cum quaerat ipsa
-                                porro, voluptatibus, ad praesentium ab officiis sunt! Dolor iste ducimus unde, facere
-                                voluptatibus quae aperiam exercitationem eligendi non quasi cumque illum libero, autem rem
-                                quod quaerat sunt delectus quo eius quas dolorem doloribus omnis? Quia facere ipsum possimus
-                                doloremque natus aliquam vel neque fugiat ab itaque. Iure nostrum amet labore nihil eum
-                                impedit odit, voluptates, culpa quod aut neque! Nobis necessitatibus provident voluptatem
-                                quod non magni officia, cumque rem, omnis esse culpa laudantium quae veniam, ipsam nihil
-                                aspernatur commodi eum eius accusantium ut harum unde vitae beatae ea? Tempora qui rerum
-                                quasi doloribus rem unde reprehenderit nemo, magnam laboriosam nihil possimus saepe,
-                                recusandae aut eveniet iure vitae aliquam accusantium officiis veniam dolorum nulla
-                                repellendus. Nulla ipsam iste fugiat veritatis vero, architecto natus temporibus quidem
-                                similique adipisci eligendi quo quasi incidunt ex delectus hic laudantium. Et voluptas
-                                aliquid excepturi, omnis aut officia nulla deleniti, beatae vero placeat voluptatum soluta
-                                tempore doloremque, adipisci dolore magnam.
+                                {{ $member->description }}
                             </p>
                         </div>
                     </div>

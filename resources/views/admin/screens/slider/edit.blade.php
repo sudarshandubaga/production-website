@@ -13,12 +13,14 @@
                         Edit Slider
                     </h5>
                     <div class="card-body">
-                        {{ Form::open(['url' => route('admin.slider.update', $slider), 'method' => 'PUT']) }}
-                        @include('admin.screens.slider._form')
-                        <div class="d-grid">
-                            <button class="btn btn-primary">Update</button>
-                        </div>
-                        {{ Form::close() }}
+                        <form action="{{ route('admin.slider.update', $slider) }}" method="post">
+                            @csrf
+                            @method('PUT')
+                            @include('admin.screens.slider._form')
+                            <div class="d-grid">
+                                <button class="btn btn-primary">Update</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

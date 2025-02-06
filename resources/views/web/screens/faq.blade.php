@@ -11,7 +11,7 @@
                             Q. {{ $faq['question'] }}
                         </button>
                         <div id="faq-answer-{{ $index }}" class="p-4 text-gray-600 {{ $index > 0 ? 'hidden' : '' }}">
-                            {{ $faq['answer'] }}
+                            {!! $faq['answer'] !!}
                         </div>
                     </div>
                 @endforeach

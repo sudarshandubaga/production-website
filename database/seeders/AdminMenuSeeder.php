@@ -71,15 +71,105 @@ class AdminMenuSeeder extends Seeder
         ], true);
 
         $this->addRow([
-            'label' => 'Enquiry',
-            'icon'  => 'bx bx-phone',
+            'label' => 'Team',
+            'icon'  => 'bx bx-group',
         ]);
 
         $this->addRow([
-            'label' => 'Visitor',
-            'route_name' => 'admin.enquiry.index',
-            'params' => ['type' => 'visitor']
+            'label' => 'Create New Team',
+            'route_name' => 'admin.team.create',
         ], true);
+
+        $this->addRow([
+            'label' => 'View Teams',
+            'route_name' => 'admin.team.index',
+        ], true);
+
+        $this->addRow([
+            'label' => 'Movie / Television',
+            'icon'  => 'bx bx-movie-play',
+        ]);
+
+        $this->addRow([
+            'label' => 'Create New Movie / Television',
+            'route_name' => 'admin.movie.create',
+        ], true);
+
+        $this->addRow([
+            'label' => 'View Movies / Televisions',
+            'route_name' => 'admin.movie.index',
+        ], true);
+
+        $this->addRow([
+            'label' => 'VFX',
+            'icon'  => 'bx bx-laptop',
+        ]);
+
+        $this->addRow([
+            'label' => 'Create New VFX',
+            'route_name' => 'admin.vfx.create',
+        ], true);
+
+        $this->addRow([
+            'label' => 'View VFXs',
+            'route_name' => 'admin.vfx.index',
+        ], true);
+
+        $this->addRow([
+            'label' => 'Studio',
+            'icon'  => 'bx bxs-microphone-alt',
+        ]);
+
+        $this->addRow([
+            'label' => 'Studio Category',
+            'route_name' => 'admin.studio-category.index',
+        ], true);
+
+        $this->addRow([
+            'label' => 'Create New Studio',
+            'route_name' => 'admin.studio.create',
+        ], true);
+
+        $this->addRow([
+            'label' => 'View Studios',
+            'route_name' => 'admin.studio.index',
+        ], true);
+
+        $this->addRow([
+            'label' => 'Syndication',
+            'icon'  => 'bx bx-pin',
+        ]);
+
+        $this->addRow([
+            'label' => 'Create New Syndication',
+            'route_name' => 'admin.syndication.create',
+        ], true);
+
+        $this->addRow([
+            'label' => 'View Syndications',
+            'route_name' => 'admin.syndication.index',
+        ], true);
+
+        $this->addRow([
+            'label' => 'Work Video',
+            'icon'  => 'bx bxs-video',
+        ]);
+
+        $this->addRow([
+            'label' => 'Create New Work Video',
+            'route_name' => 'admin.work-video.create',
+        ], true);
+
+        $this->addRow([
+            'label' => 'View Work Videos',
+            'route_name' => 'admin.work-video.index',
+        ], true);
+
+        $this->addRow([
+            'label' => 'Enquiry',
+            'icon'  => 'bx bx-phone',
+            'route_name' => 'admin.enquiry.index',
+        ]);
 
         AdminMenu::insert($this->data);
     }
