@@ -3,7 +3,7 @@
 @section('page_content')
     <section class="py-16 bg-white">
         <div class="container">
-            <div class="grid grid-cols-2 gap-16">
+            <div class="lg:grid lg:grid-cols-2 flex flex-col gap-16">
                 @foreach ($records as $record)
                     <div>
                         <h5 class="font-bold text-2xl mb-5">{{ $record['title'] }}</h5>

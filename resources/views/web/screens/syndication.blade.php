@@ -6,7 +6,7 @@
             <h3 class="text-3xl text-orange-500 font-bold ps-5 border-s-4 border-s-orange-500 mb-5">
                 Syndication Catalogues
             </h3>
-            <div class="grid grid-cols-4 gap-5">
+            <div class="grid lg:grid-cols-4 grid-cols-2 gap-5">
                 @foreach ($syndications as $syndication)
                     <div class="relative [&:hover>img]:scale-125 overflow-hidden rounded-lg">
                         <img src="{{ $syndication['image'] }}" alt="{{ $syndication['title'] }}" loading="lazy"

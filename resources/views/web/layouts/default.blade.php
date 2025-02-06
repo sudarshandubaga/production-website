@@ -40,17 +40,23 @@
 </head>
 
 <body class="font-sans antialiased dark:bg-black dark:text-white/50 bg-orange-50">
-    <header class="fixed top-2 left-0 right-0 z-10 text-white">
+    <header class="header">
         <div class="container">
-            <div class="bg-orange-400 rounded overflow-hidden">
-                <div class="flex items-center">
-                    <a href="{{ route('home') }}" class="block bg-orange-200 px-5 py-2">
-                        <img src="{{ $site->logo }}" alt="{{ $site->title }} Logo"
-                            title="{{ $site->title }} Logo" class="h-20">
-                    </a>
+            <div class="bg-orange-400 lg:rounded overflow-hidden">
+                <div class="flex flex-col lg:flex-row lg:items-center">
+                    <div class="flex items-center justify-between bg-orange-200 px-5 py-2">
+                        <a href="{{ route('home') }}">
+                            <img src="{{ $site->logo }}" alt="{{ $site->title }} Logo"
+                                title="{{ $site->title }} Logo" class="h-20">
+                        </a>
+                        <button type="button"
+                            class="bg-orange-500 aspect-square px-1 text-3xl rounded toggle-menu lg:hidden">
+                            <i class="bi bi-list"></i>
+                        </button>
+                    </div>
 
                     <x-menu menuLocation="Header" :params="[
-                        'class' => 'ms-auto flex gap-5 px-5 text-lg [&>li:hover]:text-yellow-800 font-bold',
+                        'class' => 'navbar',
                     ]" />
                 </div>
             </div>
@@ -63,8 +69,8 @@
 
     <footer class="py-16 text-sm bg-gray-900 text-gray-300">
         <div class="container">
-            <div class="grid grid-cols-7 gap-5">
-                <div class="col-span-3">
+            <div class="lg:grid flex flex-col lg:grid-cols-7 gap-5">
+                <div class="lg:col-span-3">
                     <h3 class="text-3xl font-bold text-white mb-5">{{ $site->title }}</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro quibusdam eum quaerat incidunt,
                         molestias illum ducimus soluta corporis debitis odit aspernatur placeat rem dolor minus ullam
@@ -88,7 +94,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-span-1">
+                <div class="lg:col-span-1">
                     <h3 class="text-3xl font-bold text-white mb-5">Quick Links</h3>
 
                     <x-menu menuLocation="Footer 1" :params="[
@@ -97,7 +103,7 @@
                         'linkClass' => 'flex items-center gap-2',
                     ]" />
                 </div>
-                <div class="col-span-1">
+                <div class="lg:col-span-1">
                     <h3 class="text-3xl font-bold text-white mb-5">Support</h3>
                     <x-menu menuLocation="Footer 2" :params="[
                         'class' => 'space-y-3',
@@ -127,7 +133,7 @@
                 </div>
             </div>
 
-            <div class="mt-10 flex justify-between">
+            <div class="mt-10 flex flex-col lg:flex-row gap-3 text-center lg:text-start justify-between">
                 <div>
                     &copy; {{ date('Y') }} . All rights are reserved by <a href="{{ route('home') }}"
                         class="font-bold">{{ $site->title }}</a>

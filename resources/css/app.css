@@ -29,3 +29,24 @@ footer {
         }
     }
 }
+
+@media screen and (min-width: 800px) {
+    .header {
+        @apply fixed top-2 left-0 right-0 z-10 text-white;
+    }
+    .navbar {
+        @apply lg:ms-auto flex flex-col lg:flex-row gap-5 px-5 text-lg [&>li:hover]:text-yellow-800 font-bold;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .header {
+        @apply top-0 bottom-0 left-0 right-0 z-10 text-white overflow-hidden bg-orange-200;
+    }
+    .navbar {
+        @apply fixed top-0 bottom-0 -start-full bg-orange-500 z-20 lg:ms-auto flex flex-col lg:flex-row gap-5 px-5 py-5 text-lg [&>li:hover]:text-yellow-800 font-bold w-8/12 overflow-auto transition-all;
+    }
+    .navbar.active {
+        @apply start-0;
+    }
+}

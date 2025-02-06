@@ -51,10 +51,17 @@ document.addEventListener("DOMContentLoaded", function () {
             pauseOnMouseEnter: true,
             waitForTransition: true,
         },
-        slidesPerView: 4,
         speed: 2000,
         spaceBetween: 20,
         freeMode: true,
+        breakpoints: {
+            800: {
+                slidesPerView: 4,
+            },
+            0: {
+                slidesPerView: 2.5,
+            },
+        },
     });
 
     new Swiper(".video-carousel", {
@@ -71,9 +78,18 @@ document.addEventListener("DOMContentLoaded", function () {
             prevEl: ".swiper-button-prev",
         },
         centeredSlides: true,
-        slidesPerView: 2,
-        slidesPerGroup: 1,
-        spaceBetween: 50,
+        breakpoints: {
+            800: {
+                slidesPerView: 2,
+                slidesPerGroup: 1,
+                spaceBetween: 50,
+            },
+            0: {
+                slidesPerView: 1.2,
+                slidesPerGroup: 1,
+                spaceBetween: 0,
+            },
+        },
     });
 
     new Swiper(".blog-carousel", {
@@ -88,8 +104,15 @@ document.addEventListener("DOMContentLoaded", function () {
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
         },
-        slidesPerView: 3,
         spaceBetween: 20,
+        breakpoints: {
+            800: {
+                slidesPerView: 3,
+            },
+            0: {
+                slidesPerView: 1,
+            },
+        },
     });
 
     $(document).on("click", ".vLightbox", function (e) {
@@ -101,5 +124,9 @@ document.addEventListener("DOMContentLoaded", function () {
     $(document).on("click", ".closeVLightbox", function (e) {
         e.preventDefault();
         closeLightbox();
+    });
+
+    $(document).on("click", ".toggle-menu", function () {
+        $(".navbar").toggleClass("active");
     });
 });

@@ -4,7 +4,7 @@
     <section class="py-16 bg-white">
         <div class="container">
             <h3 class="text-3xl text-orange-500 font-bold ps-5 border-s-4 border-s-orange-500 mb-5">Stages</h3>
-            <div class="grid grid-cols-4 gap-5">
+            <div class="grid lg:grid-cols-4 grid-cols-2 gap-5">
                 @foreach ($stages as $stage)
                     <div class="relative [&:hover>img]:scale-125 overflow-hidden rounded-lg">
                         <img src="{{ $stage['image'] }}" alt="{{ $stage['title'] }}" loading="lazy"
@@ -20,10 +20,8 @@
     </section>
     <section class="py-16 bg-white">
         <div class="container">
-
-
             <h3 class="text-3xl text-orange-500 font-bold ps-5 border-s-4 border-s-orange-500 mb-5">Studio Services</h3>
-            <div class="grid grid-cols-4 gap-5">
+            <div class="grid lg:grid-cols-4 grid-cols-2 gap-5">
                 @foreach ($stages as $stage)
                     <div class="relative [&:hover>img]:scale-125 overflow-hidden rounded-lg">
                         <img src="{{ $stage['image'] }}" alt="{{ $stage['title'] }}" loading="lazy"
@@ -41,7 +39,7 @@
         <div class="container">
 
             <h3 class="text-3xl text-orange-500 font-bold ps-5 border-s-4 border-s-orange-500 mb-5">Filmography</h3>
-            <div class="grid grid-cols-4 gap-5">
+            <div class="grid lg:grid-cols-4 grid-cols-2 gap-5">
                 @foreach ($stages as $stage)
                     <div class="relative [&:hover>img]:scale-125 overflow-hidden rounded-lg">
                         <img src="{{ $stage['image'] }}" alt="{{ $stage['title'] }}" loading="lazy"

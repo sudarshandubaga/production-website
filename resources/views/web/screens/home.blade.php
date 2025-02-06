@@ -115,11 +115,11 @@
         style="background-image: url({{ asset('images/movie-bg.jpg') }}); background-size: cover; background-attachment: fixed;">
         <div class="overlay py-16   bg-gray-700/80">
             <div class="container">
-                <div class="grid grid-cols-3 gap-10 items-center">
-                    <div class="aspect-square bg-white flex justify-center items-center col-span-1 p-10 rounded-lg">
+                <div class="grid lg:grid-cols-3 gap-10 items-center">
+                    <div class="aspect-square bg-white flex justify-center items-center lg:col-span-1 p-10 rounded-lg">
                         <img src="{{ asset('images/logo-full.png') }}" alt="" class="inline">
                     </div>
-                    <div class="col-span-2">
+                    <div class="lg:col-span-2">
                         <h3 class="text-3xl text-white font-bold ps-5 border-s-4 border-s-white mb-5">About <span
                                 class="text-orange-500">{{ env('APP_NAME') }}</span>
                         </h3>
@@ -181,21 +181,21 @@
     {{-- Video Section End --}}
 
     {{-- Numbers Section Start --}}
-    <section class="py-16 grid grid-cols-4 text-white text-center">
+    <section class="py-16 grid lg:grid-cols-4 grid-cols-2 text-white text-center">
         <div class="aspect-square flex flex-col justify-center bg-purple-600">
-            <div class="text-8xl font-bold">5+</div>
+            <div class="text-5xl lg:text-8xl font-bold">5+</div>
             <div class="text-3xl">TV Shows</div>
         </div>
         <div class="aspect-square flex flex-col justify-center bg-green-600">
-            <div class="text-8xl font-bold">500+</div>
+            <div class="text-5xl lg:text-8xl font-bold">500+</div>
             <div class="text-3xl">Episodes</div>
         </div>
         <div class="aspect-square flex flex-col justify-center bg-yellow-600">
-            <div class="text-8xl font-bold">4.8</div>
+            <div class="text-5xl lg:text-8xl font-bold">4.8</div>
             <div class="text-3xl">Avg. IMDB Rating</div>
         </div>
         <div class="aspect-square flex flex-col justify-center bg-blue-600">
-            <div class="text-8xl font-bold">8.9</div>
+            <div class="text-5xl lg:text-8xl font-bold">8.9</div>
             <div class="text-3xl">Avg. TRP</div>
         </div>
     </section>

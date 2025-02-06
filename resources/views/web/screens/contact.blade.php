@@ -3,7 +3,7 @@
 @section('page_content')
     <section class="py-16 bg-white">
         <div class="container">
-            <div class="grid grid-cols-2 gap-10">
+            <div class="grid lg:grid-cols-2 grid-cols-1 gap-10">
                 <div>
                     <h3 class="text-3xl text-orange-500 font-bold ps-5 border-s-4 border-s-orange-500 mb-5">
                         Enquiry Now:
