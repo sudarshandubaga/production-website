@@ -1,15 +1,15 @@
 @extends('admin.layouts.afterlogin')
 
-@section('title', 'Enquiries')
+@section('title', 'Syndication')
 
 @section('admin_content')
     <!-- Content -->
     <div class="container-xxl flex-grow-1 container-p-y">
         <x-alert />
         <div class="card">
-            <h5 class="card-header">View Enquiries</h5>
+            <h5 class="card-header">View Syndications</h5>
             <div class="card-body">
-                @if ($enquiries->isEmpty())
+                @if ($syndications->isEmpty())
                     <div>No data found.</div>
                 @else
                     <div class="table-responsive">
@@ -17,34 +17,35 @@
                             <thead>
                                 <tr>
                                     <th>SNo.</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Contact No.</th>
-                                    <th>Message</th>
+                                    <th>Image</th>
+                                    <th>Title</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($enquiries as $key => $enquiry)
+                                @foreach ($syndications as $key => $syndication)
                                     <tr>
                                         <td>
-                                            {{ $key + $enquiries->firstItem() }}
+                                            {{ $key + $syndications->firstItem() }}
                                         </td>
                                         <td>
-                                            {{ $enquiry->name }}
+                                            @if ($syndication->image)
+                                                <img src="{{ $syndication->image }}" alt="{{ $syndication->name }}"
+                                                    class="img img-thumbnail" style="max-height: 48px">
+                                            @else
+                                                No Image
+                                            @endif
                                         </td>
                                         <td>
-                                            {{ $enquiry->email }}
+                                            {{ $syndication->title }}
                                         </td>
                                         <td>
-                                            {{ $enquiry->phone }}
-                                        </td>
-                                        <td>
-                                            {{ $enquiry->message }}
-                                        </td>
-                                        <td>
+                                            <a href="{{ route('admin.syndication.edit', $syndication) }}" title="Edit"
+                                                class="btn btn-link">
+                                                <i class="bx bxs-pencil"></i>
+                                            </a>
                                             <button type="button" class="btn btn-link text-danger btn-delete"
-                                                data-href="{{ route('admin.enquiry.destroy', [$enquiry]) }}">
+                                                data-href="{{ route('admin.syndication.destroy', [$syndication]) }}">
                                                 <i class="bx bx-trash"></i>
                                             </button>
                                         </td>
@@ -54,7 +55,7 @@
                         </table>
                     </div>
                     <div class="py-5">
-                        {{ $enquiries->links() }}
+                        {{ $syndications->links() }}
                     </div>
                 @endif
             </div>

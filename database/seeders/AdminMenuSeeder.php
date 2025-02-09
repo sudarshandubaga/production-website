@@ -153,17 +153,8 @@ class AdminMenuSeeder extends Seeder
         $this->addRow([
             'label' => 'Work Video',
             'icon'  => 'bx bxs-video',
-        ]);
-
-        $this->addRow([
-            'label' => 'Create New Work Video',
-            'route_name' => 'admin.work-video.create',
-        ], true);
-
-        $this->addRow([
-            'label' => 'View Work Videos',
             'route_name' => 'admin.work-video.index',
-        ], true);
+        ]);
 
         $this->addRow([
             'label' => 'Enquiry',

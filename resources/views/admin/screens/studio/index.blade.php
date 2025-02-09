@@ -1,15 +1,15 @@
 @extends('admin.layouts.afterlogin')
 
-@section('title', 'Enquiries')
+@section('title', 'Studio')
 
 @section('admin_content')
     <!-- Content -->
     <div class="container-xxl flex-grow-1 container-p-y">
         <x-alert />
         <div class="card">
-            <h5 class="card-header">View Enquiries</h5>
+            <h5 class="card-header">View Studios</h5>
             <div class="card-body">
-                @if ($enquiries->isEmpty())
+                @if ($studios->isEmpty())
                     <div>No data found.</div>
                 @else
                     <div class="table-responsive">
@@ -17,34 +17,35 @@
                             <thead>
                                 <tr>
                                     <th>SNo.</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Contact No.</th>
-                                    <th>Message</th>
+                                    <th>Image</th>
+                                    <th>Title</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($enquiries as $key => $enquiry)
+                                @foreach ($studios as $key => $studio)
                                     <tr>
                                         <td>
-                                            {{ $key + $enquiries->firstItem() }}
+                                            {{ $key + $studios->firstItem() }}
                                         </td>
                                         <td>
-                                            {{ $enquiry->name }}
+                                            @if ($studio->image)
+                                                <img src="{{ $studio->image }}" alt="{{ $studio->name }}"
+                                                    class="img img-thumbnail" style="max-height: 48px">
+                                            @else
+                                                No Image
+                                            @endif
                                         </td>
                                         <td>
-                                            {{ $enquiry->email }}
+                                            {{ $studio->title }}
                                         </td>
                                         <td>
-                                            {{ $enquiry->phone }}
-                                        </td>
-                                        <td>
-                                            {{ $enquiry->message }}
-                                        </td>
-                                        <td>
+                                            <a href="{{ route('admin.studio.edit', $studio) }}" title="Edit"
+                                                class="btn btn-link">
+                                                <i class="bx bxs-pencil"></i>
+                                            </a>
                                             <button type="button" class="btn btn-link text-danger btn-delete"
-                                                data-href="{{ route('admin.enquiry.destroy', [$enquiry]) }}">
+                                                data-href="{{ route('admin.studio.destroy', [$studio]) }}">
                                                 <i class="bx bx-trash"></i>
                                             </button>
                                         </td>
@@ -54,7 +55,7 @@
                         </table>
                     </div>
                     <div class="py-5">
-                        {{ $enquiries->links() }}
+                        {{ $studios->links() }}
                     </div>
                 @endif
             </div>

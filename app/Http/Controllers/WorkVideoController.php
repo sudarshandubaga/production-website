@@ -12,7 +12,8 @@ class WorkVideoController extends Controller
      */
     public function index()
     {
-        //
+        $workVideos = WorkVideo::latest()->get();
+        return view('admin.screens.workVideo.index', compact('workVideos'));
     }
 
     /**
@@ -28,7 +29,17 @@ class WorkVideoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title'             => 'required',
+            'youtube_video_id' => 'required'
+        ]);
+
+        $workVideo = new WorkVideo();
+        $workVideo->title = $request->title;
+        $workVideo->youtube_video_id = $request->youtube_video_id;
+        $workVideo->save();
+
+        return redirect()->back()->with('success', 'Success! Work video added.');
     }
 
     /**
@@ -44,7 +55,10 @@ class WorkVideoController extends Controller
      */
     public function edit(WorkVideo $workVideo)
     {
-        //
+        request()->replace($workVideo->toArray());
+        request()->flash();
+
+        return view('admin.screens.workVideo.edit', compact('workVideo'));
     }
 
     /**
@@ -52,7 +66,16 @@ class WorkVideoController extends Controller
      */
     public function update(Request $request, WorkVideo $workVideo)
     {
-        //
+        $request->validate([
+            'title'                 => 'required',
+            'tityoutube_video_idle' => 'required',
+        ]);
+
+        $workVideo->title = $request->title;
+        $workVideo->youtube_video_id = $request->youtube_video_id;
+        $workVideo->save();
+
+        return redirect(route('admin.workVideo.index'))->with('success', 'Success! WorkVideo image added.');
     }
 
     /**
@@ -60,6 +83,8 @@ class WorkVideoController extends Controller
      */
     public function destroy(WorkVideo $workVideo)
     {
-        //
+        $workVideo->delete();
+
+        return redirect()->back()->with('success', 'Success! A data has been deleted.');
     }
 }

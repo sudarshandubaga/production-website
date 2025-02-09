@@ -12,7 +12,8 @@ class StudioCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $studioCategories = StudioCategory::latest()->get();
+        return view('admin.screens.studio-category.index', compact('studioCategories'));
     }
 
     /**
@@ -28,7 +29,15 @@ class StudioCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:studio_categories,name',
+        ]);
+
+        $studioCategory = new StudioCategory();
+        $studioCategory->name = $request->name;
+        $studioCategory->save();
+
+        return redirect()->back()->with('success', 'Success! Studio Category added.');
     }
 
     /**
@@ -44,7 +53,10 @@ class StudioCategoryController extends Controller
      */
     public function edit(StudioCategory $studioCategory)
     {
-        //
+        request()->replace($studioCategory->toArray());
+        request()->flash();
+
+        return view('admin.screens.studio-category.edit', compact('studioCategory'));
     }
 
     /**
@@ -52,7 +64,14 @@ class StudioCategoryController extends Controller
      */
     public function update(Request $request, StudioCategory $studioCategory)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:studio_categories,name,' . $studioCategory->id,
+        ]);
+
+        $studioCategory->name = $request->name;
+        $studioCategory->save();
+
+        return redirect(route('admin.studio-category.index'))->with('success', 'Success! StudioCategory image added.');
     }
 
     /**
@@ -60,6 +79,8 @@ class StudioCategoryController extends Controller
      */
     public function destroy(StudioCategory $studioCategory)
     {
-        //
+        $studioCategory->delete();
+
+        return redirect()->back()->with('success', 'Success! A data has been deleted.');
     }
 }

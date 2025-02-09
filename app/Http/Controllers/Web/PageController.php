@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Faq;
 use App\Models\Page;
+use App\Models\StudioCategory;
+use App\Models\Syndication;
 use App\Models\Team;
 use App\Models\Vfx;
 use Illuminate\Http\Request;
@@ -76,95 +78,13 @@ class PageController extends Controller
 
     private function studio($page)
     {
-        $stages = [
-            [
-                'title' => 'Porus',
-                'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsMPrdWJ_2k269QfdgVW4iuhv9evR3gH0mdA&s'
-            ],
-            [
-                'title' => 'Chandragupta Maurya',
-                'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNLVxFS5B7V6EmC2SASJMhI1ylaNfJZ2t99A&s'
-            ],
-            [
-                'title' => 'Devi',
-                'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQP1gSKvMNklemq5-FMo9ytUuZtmQGm7skv8g&s'
-            ],
-            [
-                'title' => 'Porus',
-                'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsMPrdWJ_2k269QfdgVW4iuhv9evR3gH0mdA&s'
-            ],
-            [
-                'title' => 'Chandragupta Maurya',
-                'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNLVxFS5B7V6EmC2SASJMhI1ylaNfJZ2t99A&s'
-            ],
-            [
-                'title' => 'Devi',
-                'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQP1gSKvMNklemq5-FMo9ytUuZtmQGm7skv8g&s'
-            ],
-            [
-                'title' => 'Porus',
-                'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsMPrdWJ_2k269QfdgVW4iuhv9evR3gH0mdA&s'
-            ],
-            [
-                'title' => 'Chandragupta Maurya',
-                'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNLVxFS5B7V6EmC2SASJMhI1ylaNfJZ2t99A&s'
-            ],
-        ];
-        return view('web.screens.studio', compact('page', 'stages'));
+        $studioCategories = StudioCategory::with('studios')->has('studios')->get();
+        return view('web.screens.studio', compact('page', 'studioCategories'));
     }
 
     private function syndication($page)
     {
-        $syndications = [
-            [
-                'title' => 'Porus',
-                'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsMPrdWJ_2k269QfdgVW4iuhv9evR3gH0mdA&s'
-            ],
-            [
-                'title' => 'Chandragupta Maurya',
-                'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNLVxFS5B7V6EmC2SASJMhI1ylaNfJZ2t99A&s'
-            ],
-            [
-                'title' => 'Devi',
-                'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQP1gSKvMNklemq5-FMo9ytUuZtmQGm7skv8g&s'
-            ],
-            [
-                'title' => 'Porus',
-                'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsMPrdWJ_2k269QfdgVW4iuhv9evR3gH0mdA&s'
-            ],
-            [
-                'title' => 'Chandragupta Maurya',
-                'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNLVxFS5B7V6EmC2SASJMhI1ylaNfJZ2t99A&s'
-            ],
-            [
-                'title' => 'Devi',
-                'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQP1gSKvMNklemq5-FMo9ytUuZtmQGm7skv8g&s'
-            ],
-            [
-                'title' => 'Porus',
-                'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsMPrdWJ_2k269QfdgVW4iuhv9evR3gH0mdA&s'
-            ],
-            [
-                'title' => 'Chandragupta Maurya',
-                'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNLVxFS5B7V6EmC2SASJMhI1ylaNfJZ2t99A&s'
-            ],
-            [
-                'title' => 'Devi',
-                'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQP1gSKvMNklemq5-FMo9ytUuZtmQGm7skv8g&s'
-            ],
-            [
-                'title' => 'Porus',
-                'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsMPrdWJ_2k269QfdgVW4iuhv9evR3gH0mdA&s'
-            ],
-            [
-                'title' => 'Chandragupta Maurya',
-                'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNLVxFS5B7V6EmC2SASJMhI1ylaNfJZ2t99A&s'
-            ],
-            [
-                'title' => 'Devi',
-                'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQP1gSKvMNklemq5-FMo9ytUuZtmQGm7skv8g&s'
-            ],
-        ];
+        $syndications = Syndication::latest()->get();
         return view('web.screens.syndication', compact('page', 'syndications'));
     }
 

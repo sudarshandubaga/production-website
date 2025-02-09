@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Page;
 use App\Models\Slider;
+use App\Models\WorkVideo;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -16,16 +17,7 @@ class HomeController extends Controller
 
         $sliders = Slider::latest()->get();
 
-        $videos = [
-            "9SNLma8mcK8",
-            "a3B2glol4IU",
-            "GOkJguI8kYc",
-            "nCD2hj6zJEc",
-            "HexFqifusOk",
-            "XgdY_s1LsZc",
-            "h6qwhCDI3vQ",
-            "VGPmFSB8qVY",
-        ];
+        $videos = WorkVideo::get();
 
         $blogs = Blog::latest()->paginate(10);
 

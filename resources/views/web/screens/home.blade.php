@@ -168,7 +168,7 @@
             <div class="swiper-wrapper">
                 @foreach ($videos as $video)
                     <div class="swiper-slide">
-                        <x-video-lightbox :videoID="$video" />
+                        <x-video-lightbox :videoID="$video->youtube_video_id" />
                     </div>
                 @endforeach
             </div>

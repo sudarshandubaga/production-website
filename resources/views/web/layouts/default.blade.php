@@ -35,6 +35,8 @@
     <!-- Favicon -->
     <link rel="icon" href="{{ $site->favicon }}" type="image/x-icon">
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
 
     @vite('resources/css/app.css')
 </head>

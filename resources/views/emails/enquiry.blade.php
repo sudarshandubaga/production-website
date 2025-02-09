@@ -40,12 +40,6 @@
             Please find below enquiry details:
         </p>
         <table>
-            @if (!empty($data['type']))
-                <tr>
-                    <th>Registration Type</th>
-                    <td>{{ $data['type'] }}</td>
-                </tr>
-            @endif
 
             @if (!empty($data['name']))
                 <tr>
@@ -54,17 +48,10 @@
                 </tr>
             @endif
 
-            @if (!empty($data['company_name']))
+            @if (!empty($data['phone']))
                 <tr>
-                    <th>Company Name</th>
-                    <td>{{ $data['company_name'] }}</td>
-                </tr>
-            @endif
-
-            @if (!empty($data['mobile']))
-                <tr>
-                    <th>Mobile No.</th>
-                    <td>{{ $data['mobile'] }}</td>
+                    <th>Contact No.</th>
+                    <td>{{ $data['phone'] }}</td>
                 </tr>
             @endif
 
@@ -75,10 +62,10 @@
                 </tr>
             @endif
 
-            @if (!empty($data['address']))
+            @if (!empty($data['message']))
                 <tr>
-                    <th>Address</th>
-                    <td>{{ $data['address'] }}</td>
+                    <th>Message</th>
+                    <td>{{ $data['message'] }}</td>
                 </tr>
             @endif
         </table>
