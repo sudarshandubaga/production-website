@@ -52,7 +52,10 @@ Route::group([
         ]);
     });
 });
+Route::get('/', function () {
+    return view('errors.construction');
+});
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::post('/enquiry-submit', [ControllersEnquiryController::class, 'store'])->name('enquiry.submit');
 Route::get('{page}', [PageController::class, 'show'])->name('page.show');
