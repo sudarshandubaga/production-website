@@ -14,6 +14,7 @@ class HomeController extends Controller
     public function index()
     {
         $page = Page::where('slug', 'home')->firstOrFail();
+        $about = Page::where('slug', 'about-us')->firstOrFail();
 
         $sliders = Slider::latest()->get();
 
@@ -21,6 +22,6 @@ class HomeController extends Controller
 
         $blogs = Blog::latest()->paginate(10);
 
-        return view('web.screens.home', compact("videos", 'blogs', 'page', 'sliders'));
+        return view('web.screens.home', compact("videos", 'blogs', 'page', 'about', 'sliders'));
     }
 }

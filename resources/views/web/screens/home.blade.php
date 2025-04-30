@@ -123,7 +123,8 @@
                         <h3 class="text-3xl text-white font-bold ps-5 border-s-4 border-s-white mb-5">About <span
                                 class="text-orange-500">{{ env('APP_NAME') }}</span>
                         </h3>
-                        <p class="font-bold mb-5">
+                        {!! $about->description !!}
+                        {{-- <p class="font-bold mb-5">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam minima alias quisquam quod
                             assumenda,
                             harum corporis? Illum, sapiente qui rerum illo quasi fugiat! Fuga quaerat, ad tenetur alias
@@ -144,8 +145,8 @@
                             Perspiciatis cupiditate dolore non illum alias facere laboriosam officiis voluptatem aut debitis
                             harum magni deserunt ut, perferendis suscipit, quas corporis doloribus consectetur rem quibusdam
                             fugiat vel illo rerum temporibus? Quos blanditiis neque, vero consequuntur illo accusantium!
-                        </p>
-                        <a href="" class="default-btn">Read More &raquo;</a>
+                        </p> --}}
+                        <a href="{{ route('page.show', 'about-us') }}" class="default-btn">Read More &raquo;</a>
                     </div>
                 </div>
             </div>
